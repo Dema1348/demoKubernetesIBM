@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: back-end-deploy
+    labels:
+        app: back-end
+spec:
+    selector:
+        matchLabels:
+            app: back-end
+    template:
+        metadata:
+            name: redis
+            labels:
+                app: back-end
+        spec:
+            containers:
+                - name: redis
+                  image: redis:2.8.23
+                  ports:
+                    - containerPort: 6379
+    replicas: 1
+
+
